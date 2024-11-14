@@ -1,4 +1,5 @@
 import yfinance as yf
+from datetime import date
 
 class StockData:
     def __init__(self, ticker):
@@ -37,3 +38,9 @@ class StockData:
             "market_cap": market_cap,
             "pe_ratio": pe_ratio
         }
+    
+    def export_to_csv(self):
+        return self.sd.to_csv(f"{self.ticker} - {date.today()}.csv")
+    
+    def export_to_xlsx(self):
+        return self.sd.to_excel(f"{self.ticker} - {date.today()}.xlsx")
